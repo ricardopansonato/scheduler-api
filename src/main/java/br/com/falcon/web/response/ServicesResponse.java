@@ -14,7 +14,7 @@ public class ServicesResponse {
 	}
 	
 	public ServicesResponse(List<Service> services) {
-		this.services = services.stream().map(s -> new ServiceResponse(s.getId(), s.getName())).collect(Collectors.toList());
+		this.services = services.stream().map(s -> new ServiceResponse(s.getId(), s.getName(), s.getUsers())).collect(Collectors.toList());
 	}
 
 	public List<ServiceResponse> getServices() {

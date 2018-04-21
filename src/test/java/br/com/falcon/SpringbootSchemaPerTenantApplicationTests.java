@@ -1,4 +1,4 @@
-package com.alonsegal;
+package br.com.falcon;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

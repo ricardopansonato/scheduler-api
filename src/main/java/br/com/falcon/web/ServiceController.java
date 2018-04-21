@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,7 @@ public class ServiceController {
 
     @PreAuthorize("@securityService.hasProtectedAccess()")
     @RequestMapping(value = "industries/{industryId}/services", method = RequestMethod.GET)
-    public ResponseEntity<?> view(HttpServletRequest request, Long industryId, Device device) throws AuthenticationException {
+    public ResponseEntity<?> view(HttpServletRequest request, @PathVariable Long industryId, Device device) throws AuthenticationException {
         
     		final String authToken = request.getHeader(this.tokenHeader);
 		final String username = this.tokenUtils.getUsernameFromToken(authToken);
@@ -57,6 +58,6 @@ public class ServiceController {
             e.printStackTrace();
         }
         
-        return new ResponseEntity<>(new ServicesResponse(serviceRepository.findByIndustryIdOrderByName(industryId)), HttpStatus.OK);
+        return new ResponseEntity<>(new ServicesResponse(serviceRepository.findByIndustry_IdOrderByName(industryId)), HttpStatus.OK);
     }
 }

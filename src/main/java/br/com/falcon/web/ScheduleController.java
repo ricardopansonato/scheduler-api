@@ -74,9 +74,9 @@ public class ScheduleController {
 		}
 		
 		if ("CLIENT".equals(utr.getRole())) {
-			return new ResponseEntity<>(new SchedulesResponse(scheduleRepository.findByClientIdOrderByStartDesc(utr.getId())), HttpStatus.OK);
+			return new ResponseEntity<>(new SchedulesResponse(scheduleRepository.findByClient_IdOrderByStartDesc(utr.getId())), HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(new SchedulesResponse(scheduleRepository.findByProfessionalIdOrderByStartDesc(utr.getId())), HttpStatus.OK);
+			return new ResponseEntity<>(new SchedulesResponse(scheduleRepository.findByProfessional_IdOrderByStartDesc(utr.getId())), HttpStatus.OK);
 		}
     }
     
@@ -110,7 +110,7 @@ public class ScheduleController {
 		final User professional = professionalRepository.findOne(scheduleRequest.getProfessionalId());
 		schedule.setProfessional(professional);
 		schedule.setServiceName(serviceRepository.findOne(professional.getServiceId()).getName());
-		
+		scheduleRepository.save(schedule);
 		return ResponseEntity.ok().build();
     }
 }

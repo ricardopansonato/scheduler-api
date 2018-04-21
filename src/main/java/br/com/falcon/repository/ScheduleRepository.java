@@ -8,7 +8,7 @@ import br.com.falcon.domain.Schedule;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 	
-	List<Schedule> findByClientIdOrderByStartDesc(Long id);
+	List<Schedule> findByClient_IdOrderByStartDesc(Long id);
 	
-	List<Schedule> findByProfessionalIdOrderByStartDesc(Long id);
+	List<Schedule> findByProfessional_IdOrderByStartDesc(Long id);
 }

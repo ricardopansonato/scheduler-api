@@ -24,7 +24,7 @@ public class TenantInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         String authToken = request.getHeader(this.tokenHeader);
-        String tenantId = tokenUtils.getAudienceFromToken(authToken);
+        String tenantId = tokenUtils.getTenantIdFromToken(authToken);
         TenantContext.setCurrentTenant(tenantId);
 
         return true;

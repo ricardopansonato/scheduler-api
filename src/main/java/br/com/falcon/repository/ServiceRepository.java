@@ -8,5 +8,5 @@ import br.com.falcon.domain.Service;
 
 public interface ServiceRepository extends JpaRepository<Service, Long> {
 	
-	List<Service> findByIndustryIdOrderByName(final Long id);
+	List<Service> findByIndustry_IdOrderByName(final Long id);
 }

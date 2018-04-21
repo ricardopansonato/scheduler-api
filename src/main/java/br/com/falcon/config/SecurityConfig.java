@@ -69,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.disable().exceptionHandling()
 			.authenticationEntryPoint(this.unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**", "/usuario/").permitAll().anyRequest()
+			.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers("/auth/**").permitAll().anyRequest()
 			.authenticated();
 		httpSecurity.headers().frameOptions().disable();
 
